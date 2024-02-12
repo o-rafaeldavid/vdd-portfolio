@@ -1,0 +1,42 @@
+:root{
+    --background: #101010;
+    --azul-eletrico: #00B2FF;
+    --verde-agua: #00FFC2;
+}
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: var(--font-inter);
+}
+
+body{
+    background-color: var(--background);
+}
+
+ul, ol{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.glowHover, .glowColorHover{
+    transition: filter 300ms;
+}
+.glowHover:hover, .glow{
+    filter: drop-shadow(white 0 0 10px);
+}
+
+.glowColorHover:hover{
+    filter:
+        drop-shadow(var(--azul-eletrico) 2px 2px 10px)
+        drop-shadow(var(--verde-agua) -2px -2px 10px);
+}
+
+.pointer:hover{ cursor: pointer; }

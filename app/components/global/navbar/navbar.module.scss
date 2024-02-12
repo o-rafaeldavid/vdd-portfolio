@@ -1,0 +1,104 @@
+$height: 75px;
+
+@mixin flex($dir, $al, $jc){
+  display: flex;
+  flex-direction: $dir;
+  align-items: $al;
+  justify-content: $jc;
+}
+
+.nav{
+  overflow: hidden;
+  position: fixed;
+  left: 50%; bottom: 0.75 * $height;
+
+  translate: -50% 8px; opacity: 0.5;
+  transition: all 150ms;
+  &:hover{
+    translate: -50% 0;
+    opacity: 1;
+  }
+
+  height: $height;
+
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 100%);
+  
+  $halfWhite: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  border-right: 1px solid $halfWhite;
+  border-bottom: 1px solid $halfWhite;
+
+  @include flex(row, center, center);
+
+  
+
+
+
+  @mixin transitions(){
+    transition: width 300ms, opacity 300ms;
+  }
+
+
+  > * { height: 100%; }
+  > div{
+    flex-grow: 1;
+    width: $height;
+
+    @include flex(row, center, center);
+    @include transitions();
+  }
+
+  > ul{
+    @include flex(row, unset, unset);
+    overflow: hidden;
+
+    @include transitions();
+
+    $marginRightNav: 12px;
+    > li{
+      position: relative;
+      width: $height;
+      margin-right: $marginRightNav;
+      > a{
+        display: block;
+        position: relative;
+        width: 100%; height: 100%;
+        > span{
+          position: absolute;
+          top: 50%; left: 50%;
+          translate: -50% -50%;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+.r{
+  cursor: pointer;
+  font-family: var(--font-syne);
+  $time: 300ms;
+
+
+  animation: hoverRback $time forwards ease-in-out;
+  font-size: 1.6em;
+
+  &:hover{
+    animation: hoverR $time forwards ease-in-out;
+  }
+
+  @keyframes hoverRback {
+    0%{ font-variation-settings: "wght" 800, "GRAD" 88; }
+    100%{ font-variation-settings: "wght" 740, "GRAD" 88; }
+  }
+  @keyframes hoverR {
+    0%{ font-variation-settings: "wght" 740, "GRAD" 88; }
+    100%{ font-variation-settings: "wght" 800, "GRAD" 88; }
+  }
+}
