@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Syne } from "next/font/google";
-import "./global.scss"
+import "./style/global.scss"
+import Body from "./body";
 
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${syne.variable}`}>{children}</body>
+      <Body className={`${inter.variable} ${syne.variable}`}>{children}</Body>
     </html>
   );
 }

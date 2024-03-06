@@ -28,8 +28,9 @@ export default function NavbarOptionGroup(){
     return(
         <>
             {
-                options.map(option => (
+                options.map((option, index) => (
                     <NavbarOption
+                        key={`optn-${index}`}
                         href={option.href}
                         nome={option.nome}
                         active={(option.href === firstDirectory) ? true : false}

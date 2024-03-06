@@ -1,3 +1,7 @@
+@import "./headings.scss";
+
+$navbar-height: 75px;
+
 :root{
     --background: #101010;
     --azul-eletrico: #00B2FF;
@@ -10,12 +14,12 @@
 *{
     margin: 0;
     padding: 0;
-    color: white;
-    font-family: var(--font-inter);
 }
 
 body{
     background-color: var(--background);
+    font-family: var(--font-inter);
+    color: white;
 }
 
 ul, ol{

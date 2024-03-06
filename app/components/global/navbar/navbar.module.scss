@@ -1,4 +1,4 @@
-$height: 75px;
+$navbar-height: 75px;
 
 @mixin flex($dir, $al, $jc){
   display: flex;
@@ -8,9 +8,10 @@ $height: 75px;
 }
 
 .nav{
+  z-index: 1000;
   overflow: hidden;
   position: fixed;
-  left: 50%; bottom: 0.75 * $height;
+  left: 50%; bottom: 0.75 * $navbar-height;
 
   translate: -50% 8px; opacity: 0.5;
   transition: all 150ms;
@@ -19,7 +20,7 @@ $height: 75px;
     opacity: 1;
   }
 
-  height: $height;
+  height: $navbar-height;
 
   background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 100%);
   
@@ -42,7 +43,7 @@ $height: 75px;
   > * { height: 100%; }
   > div{
     flex-grow: 1;
-    width: $height;
+    width: $navbar-height;
 
     @include flex(row, center, center);
     @include transitions();
@@ -57,7 +58,7 @@ $height: 75px;
     $marginRightNav: 12px;
     > li{
       position: relative;
-      width: $height;
+      width: $navbar-height;
       margin-right: $marginRightNav;
       > a{
         display: block;
