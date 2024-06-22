@@ -1,22 +1,13 @@
 "use client"
 import { usePathname } from "next/navigation"
-import NavbarOption from "./navbarOption"
 import { useEffect, useState } from "react"
+import NavbarOption from "./navbarOption"
+import { routeHelper } from "@/app/utils/common/routes"
 
-
-
-const options = [
-    { href: "/", nome: "About" },
-    { href: "/works", nome: "Works" },
-    { href: "/contact", nome: "Contact" }
-]
-
-
-
-export default function NavbarOptionGroup(){
+const NavbarOptionGroup = () => {
     const pathname = usePathname()
     const [firstDirectory, setFD] = useState<String>("")
-    
+
     useEffect(
         () => {
             setFD("/" + pathname.split("/")[1])
@@ -25,10 +16,10 @@ export default function NavbarOptionGroup(){
         [pathname]
     )
 
-    return(
+    return (
         <>
             {
-                options.map((option, index) => (
+                routeHelper.map((option, index) => (
                     <NavbarOption
                         key={`optn-${index}`}
                         href={option.href}
@@ -40,3 +31,5 @@ export default function NavbarOptionGroup(){
         </>
     )
 }
+
+export default NavbarOptionGroup

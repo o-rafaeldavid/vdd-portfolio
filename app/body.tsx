@@ -1,16 +1,16 @@
 "use client"
 
-import Navbar from "./components/global/navbar/navbar"
+import Navbar from "./components/global/navbar"
 
-interface BodyProps{
+type BodyProps = {
     children: React.ReactNode,
     className: string
 }
 
-export default function Body({children, className} : BodyProps){
-    return(
+export default function Body({ children, className }: BodyProps) {
+    return (
         <body className={className}>
-            <Navbar/>
+            <Navbar />
             {children}
         </body>
     )

@@ -7,7 +7,7 @@ import { roles } from "../../utils/common/roles"
 import { delayPhases } from "../../utils/common/delayPhases"
 import { COUNT_ACTION_KIND } from "../../utils/enums/rolesReducer.enum"
 import { PHASE_ACTION_KIND } from "../../utils/enums/rolesReducer.enum"
-import styleModule from "./.module.scss"
+import myRolesStyle from "./.module.scss"
 
 const maxRoles = roles.length;
 
@@ -64,7 +64,7 @@ const MyRoles = () => {
 
     return (
         <div
-            id={styleModule.myRolesDiv}
+            id={myRolesStyle.myRolesDiv}
             style={{
                 width: myRolesDivWidth,
                 '--myRoles-percentage': `${myRolesPercentage}%`
@@ -72,13 +72,13 @@ const MyRoles = () => {
         >
             <h2
                 ref={mainHeadingRef as LegacyRef<HTMLHeadingElement>}
-                className={`${styleModule.myRolesHeadings} ${(isGoing() || isComing()) ? styleModule.myRolesAnimationDown : ""}`}
+                className={`${myRolesStyle.myRolesHeadings} ${(isGoing() || isComing()) ? myRolesStyle.myRolesAnimationDown : ""}`}
             >
                 {roles[state.count % maxRoles]}
             </h2>
             <h2
                 ref={secondHeadingRef as LegacyRef<HTMLHeadingElement>}
-                className={`${styleModule.myRolesHeadings} ${styleModule.myRolesNext} ${(isComing()) ? styleModule.myRolesAnimationDown : ""}`}
+                className={`${myRolesStyle.myRolesHeadings} ${myRolesStyle.myRolesNext} ${(isComing()) ? myRolesStyle.myRolesAnimationDown : ""}`}
             >
                 {roles[(state.count + 1) % maxRoles]}
             </h2>

@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react"
 import { useAnimationFrame } from "framer-motion"
-import { mapear } from "@/app/lib/general"
+import DynamicSpan from "./components/dynamicSpan"
 
 type DynamicHeadingProps = {
     children: string,
@@ -12,14 +12,14 @@ type DynamicHeadingProps = {
     step?: number
 }
 
-export default function DynamicHeading({
+const DynamicHeading = ({
     children,
     className, id,
     eachSpan = 500,
     delaySpan = 20,
     betweenAnimations = 100,
     step = 2
-}: DynamicHeadingProps) {
+}: DynamicHeadingProps) => {
 
     const childrenArray = children.split('')
     const [counter, setCounter] = useState<number>(0)
@@ -33,7 +33,8 @@ export default function DynamicHeading({
         <h1
             className={`${(className !== undefined) ? (" " + className) : ""}`}
             id={`${(id !== undefined) ? (" " + id) : ""}`}
-        >{
+        >
+            {
                 childrenArray.map(
                     (char, index) => {
                         const delayBetween = delaySpan * index
@@ -47,70 +48,9 @@ export default function DynamicHeading({
                         )
                     }
                 )
-            }</h1>
-    )
-}
-
-
-
-interface minMax {
-    min: number,
-    max: number
-}
-
-interface DynamicSpanProps {
-    children: string,
-    interval: minMax,
-    mappingWeight: minMax,
-    actualCounter: number
-}
-
-function DynamicSpan({
-    children,
-    interval,
-    mappingWeight,
-    actualCounter
-}: DynamicSpanProps) {
-
-
-    const [weight, setWeight] = useState<number>(mappingWeight.min)
-    const metadeIntervalo = 0.5 * (interval.min + interval.max)
-
-    useEffect(
-        () => {
-            const dentroIntervalo = (actualCounter >= interval.min && actualCounter <= interval.max)
-
-
-
-
-            if (dentroIntervalo) {
-                const dentroIntervalo_metadeInferior = (actualCounter <= metadeIntervalo)
-
-                if (dentroIntervalo_metadeInferior) {
-                    setWeight(
-                        mapear(
-                            actualCounter,
-                            interval.min, metadeIntervalo,
-                            mappingWeight.min, mappingWeight.max
-                        ))
-                }
-                else {
-                    setWeight(
-                        mapear(
-                            actualCounter,
-                            metadeIntervalo, interval.max,
-                            mappingWeight.max, mappingWeight.min
-                        ))
-                }
             }
-
-
-        }, [actualCounter]
-    )
-
-
-
-    return (
-        <span style={{ fontVariationSettings: `"wght" ${weight}, "GRAD" 88` }}>{children}</span>
+        </h1>
     )
 }
+
+export default DynamicHeading

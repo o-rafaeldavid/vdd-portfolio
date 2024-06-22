@@ -1,20 +1,22 @@
 "use client"
 
 import DynamicHeading from "../../global/dynamicHeading";
-import { Viewports } from "../../global/viewport/viewport";
 import MyRoles from "./components/myRoles";
-import styleModule from "./.module.scss"
+import { Viewports } from "../../global/viewport";
+import indexHeroStyle from "./.module.scss"
 
-export default function IndexHero() {
+const IndexHero = () => {
     return (
         <Viewports.withSafespace
             marginSafespace={true}
             marginViewport={true}
         >
-            <div className={styleModule.mensagemHero}>
+            <div className={indexHeroStyle.mensagemHero}>
                 <MyRoles />
                 <DynamicHeading>CONSTRUINDO CRIAÇÕES NA WEB</DynamicHeading>
             </div>
         </Viewports.withSafespace>
     )
 }
+
+export default IndexHero
