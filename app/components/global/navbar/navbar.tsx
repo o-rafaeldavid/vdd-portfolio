@@ -1,21 +1,17 @@
 "use client"
 
+import Link from "next/link"
 import { CSSProperties, LegacyRef, useRef, useState } from "react"
 import NavbarOptionGroup from "./components/navbarOptionGroup"
 import Hamb from "./components/hamb"
-
 import navbar from "./navbar.module.scss"
-import Link from "next/link"
 
-
-
-
-export default function Navbar(){
+export default function Navbar() {
     const hambContainerRef = useRef<HTMLDivElement>()
     const listRef = useRef<HTMLUListElement>()
-    
+
     const show_hide_STYLES = {
-        show: (width : number) => { return { width: width, opacity: 1 }},
+        show: (width: number) => { return { width: width, opacity: 1 } },
         hide: { width: 0, opacity: 0 }
     }
     const [hambContainerStyle, setHambContainerStyle] = useState<CSSProperties>(show_hide_STYLES.show(75))
@@ -34,11 +30,11 @@ export default function Navbar(){
         setHambContainerStyle(show_hide_STYLES.show(75))
         const listNode = listRef.current as HTMLUListElement
         listNode.style.overflow = "hidden"
-       
+
     }
 
     ///////////////////////
-    return(
+    return (
         <nav
             className={navbar.nav}
             onMouseLeave={hideList}
@@ -51,7 +47,7 @@ export default function Navbar(){
                 ref={listRef as LegacyRef<HTMLUListElement>}
                 style={listStyle}
             >
-                <NavbarOptionGroup/>
+                <NavbarOptionGroup />
             </ul>
             {/*  */}
 
@@ -60,7 +56,7 @@ export default function Navbar(){
                 ref={hambContainerRef as LegacyRef<HTMLDivElement>}
                 style={hambContainerStyle}
             >
-                <Hamb onClick={showList}/>
+                <Hamb onClick={showList} />
             </div>
         </nav>
     )

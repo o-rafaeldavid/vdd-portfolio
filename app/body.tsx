@@ -1,5 +1,7 @@
 "use client"
 
+import Navbar from "./components/global/navbar/navbar"
+
 interface BodyProps{
     children: React.ReactNode,
     className: string
@@ -8,6 +10,7 @@ interface BodyProps{
 export default function Body({children, className} : BodyProps){
     return(
         <body className={className}>
+            <Navbar/>
             {children}
         </body>
     )

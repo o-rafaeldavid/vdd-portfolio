@@ -1,16 +1,25 @@
 $navbar-height: 75px;
 
-$viewportMargin: 24px;
+$viewportMargin: 12px;
 
 
 
 div.viewport{
     position: relative;
-    width: calc(100dvw - 2 * $viewportMargin); height: 100dvh;
-    margin: 0 $viewportMargin;
+    width: 100dvw; height: 100dvh;
+
+    &.margin{
+        width: calc(100dvw - 2 * $viewportMargin);
+        margin: 0 $viewportMargin;
+    }
 
     > div.safespace{
         position: relative;
         width: 100%; height: calc(100% - 3 * 0.75 * $navbar-height);
+
+        &.margin{
+            width: calc(100dvw - 2 * $viewportMargin);
+            margin: 0 $viewportMargin;
+        }
     }
 }

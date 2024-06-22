@@ -1,11 +1,9 @@
-import Navbar from "./components/global/navbar/navbar";
-import IndexHero from "./components/index/indexHero/indexHero";
+import IndexHero from "./components/index/indexHero";
 
 export default function Home() {
   return (
     <>
-      <Navbar/>
-      <IndexHero/>
+      <IndexHero />
     </>
   );
 }

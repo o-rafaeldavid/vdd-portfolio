@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Syne } from "next/font/google";
-import "./style/global.scss"
+import "./utils/scss/global.scss"
 import Body from "./body";
 
 

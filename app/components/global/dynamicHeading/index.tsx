@@ -1,83 +1,64 @@
 "use client"
-
 import React, { useEffect, useState } from "react"
+import { useAnimationFrame } from "framer-motion"
 import { mapear } from "@/app/lib/general"
 
-
-interface DynamicHeadingProps{
+type DynamicHeadingProps = {
     children: string,
     className?: string, id?: string,
     eachSpan?: number,
     delaySpan?: number,
     betweenAnimations?: number,
-    step?: number 
+    step?: number
 }
-
 
 export default function DynamicHeading({
     children,
     className, id,
     eachSpan = 500,
     delaySpan = 20,
-    betweenAnimations = 200,
-    step = 1
-} : DynamicHeadingProps){
+    betweenAnimations = 100,
+    step = 2
+}: DynamicHeadingProps) {
 
     const childrenArray = children.split('')
     const [counter, setCounter] = useState<number>(0)
     const maxCounter = eachSpan + delaySpan * childrenArray.length + betweenAnimations
 
+    useAnimationFrame(() => {
+        setCounter(c => c + step)
+    })
 
-    useEffect(
-        () => {
-            const interval = setInterval(
-                () => {
-                    setCounter(c => {
-                        if(c < maxCounter) return c + step
-                        else return 0
-                    })
-                }, 1
-            )
-
-            return () => clearInterval(interval)
-
-        }, []
-    )
-
-
-
-    /* animation: `spanHeader ${delay}ms ${index * between}ms ease-in-out` */
-    
-    return(
+    return (
         <h1
             className={`${(className !== undefined) ? (" " + className) : ""}`}
             id={`${(id !== undefined) ? (" " + id) : ""}`}
         >{
-            childrenArray.map(
-                (char, index) => {
-                    const delayBetween = delaySpan * index
-                    return(
-                        <DynamicSpan
-                            key={`char-${char}-${index}`}
-                            interval={{min: delayBetween, max: eachSpan + delayBetween}}
-                            mappingWeight={{min: 720, max: 800}}
-                            actualCounter={counter}
-                        >{char}</DynamicSpan>
-                    )
-                }
-            )
-        }</h1>
+                childrenArray.map(
+                    (char, index) => {
+                        const delayBetween = delaySpan * index
+                        return (
+                            <DynamicSpan
+                                key={`char-${char}-${index}`}
+                                interval={{ min: delayBetween, max: eachSpan + delayBetween }}
+                                mappingWeight={{ min: 720, max: 800 }}
+                                actualCounter={counter % maxCounter}
+                            >{char}</DynamicSpan>
+                        )
+                    }
+                )
+            }</h1>
     )
 }
 
 
 
-interface minMax{
+interface minMax {
     min: number,
     max: number
 }
 
-interface DynamicSpanProps{
+interface DynamicSpanProps {
     children: string,
     interval: minMax,
     mappingWeight: minMax,
@@ -89,7 +70,7 @@ function DynamicSpan({
     interval,
     mappingWeight,
     actualCounter
-} : DynamicSpanProps){
+}: DynamicSpanProps) {
 
 
     const [weight, setWeight] = useState<number>(mappingWeight.min)
@@ -102,24 +83,24 @@ function DynamicSpan({
 
 
 
-            if(dentroIntervalo){
+            if (dentroIntervalo) {
                 const dentroIntervalo_metadeInferior = (actualCounter <= metadeIntervalo)
 
-                if(dentroIntervalo_metadeInferior){
+                if (dentroIntervalo_metadeInferior) {
                     setWeight(
                         mapear(
                             actualCounter,
                             interval.min, metadeIntervalo,
                             mappingWeight.min, mappingWeight.max
-                    ))
+                        ))
                 }
-                else{
+                else {
                     setWeight(
                         mapear(
                             actualCounter,
                             metadeIntervalo, interval.max,
                             mappingWeight.max, mappingWeight.min
-                    ))
+                        ))
                 }
             }
 
@@ -129,7 +110,7 @@ function DynamicSpan({
 
 
 
-    return(
-        <span style={{fontVariationSettings: `"wght" ${weight}, "GRAD" 88`}}>{children}</span>
+    return (
+        <span style={{ fontVariationSettings: `"wght" ${weight}, "GRAD" 88` }}>{children}</span>
     )
 }
