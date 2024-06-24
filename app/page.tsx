@@ -1,9 +1,11 @@
 import IndexHero from "./components/index/indexHero";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <IndexHero />
     </>
   );
 }
+
+export default Home

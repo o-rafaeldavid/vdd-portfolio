@@ -11,7 +11,6 @@ const NavbarOptionGroup = () => {
     useEffect(
         () => {
             setFD("/" + pathname.split("/")[1])
-            console.log(pathname)
         },
         [pathname]
     )

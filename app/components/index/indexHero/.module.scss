@@ -1,4 +1,11 @@
-.mensagemHero{
-    position: absolute;
-    bottom: 0;
+@import '../../../utils/scss/__general_imports';
+
+.section>div {
+    @include flex($gap: 1rem);
+
+    >.imagemHero {
+        width: 100%;
+        @include glassCard(1rem);
+        flex-grow: 1;
+    }
 }

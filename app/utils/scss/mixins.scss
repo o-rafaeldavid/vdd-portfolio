@@ -1,8 +1,9 @@
-@mixin flex($dir, $al, $jc) {
+@mixin flex($dir : column, $al : flex-start, $jc: flex-start, $gap: 0) {
     display: flex;
     flex-direction: $dir;
     align-items: $al;
     justify-content: $jc;
+    gap: $gap;
 }
 
 @mixin dim($width: auto, $height: auto) {
@@ -32,4 +33,14 @@
     position: absolute;
     @include pos($x: 50%, $y: 50%);
     translate: -50% -50%;
+}
+
+@mixin glassCard($borderRadius: 0) {
+    $halfWhite: rgba(255, 255, 255, 0.5);
+    border-radius: $borderRadius;
+    border-right: 1px solid $halfWhite;
+    border-bottom: 1px solid $halfWhite;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(5rem);
 }
