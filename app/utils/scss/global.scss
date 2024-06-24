@@ -1,6 +1,5 @@
 @import "./headings.scss";
-
-$navbar-height: 75px;
+@import './__general_imports';
 
 :root {
     --background: #101010;
@@ -50,4 +49,22 @@ a {
 
 .pointer:hover {
     cursor: pointer;
+}
+
+
+
+.azul_eletrico_bg {
+    background-color: var(--azul-eletrico);
+}
+
+.azul_eletrico_color {
+    color: var(--azul-eletrico);
+}
+
+.verde_agua_bg {
+    background-color: var(--verde-agua);
+}
+
+.verde_agua_color {
+    color: var(--verde-agua);
 }

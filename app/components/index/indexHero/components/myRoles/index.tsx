@@ -2,7 +2,7 @@
 import { LegacyRef, useEffect, useReducer, useRef, useState } from "react"
 import { useAnimationFrame } from "framer-motion"
 import { useRolesReducer } from "../../utils/hooks/useRolesReducer"
-import { mapear } from "@/app/lib/general"
+import { mapear } from "@/app/utils/common/mapear"
 import { roles } from "../../utils/common/roles"
 import { delayPhases } from "../../utils/common/delayPhases"
 import { COUNT_ACTION_KIND } from "../../utils/enums/rolesReducer.enum"

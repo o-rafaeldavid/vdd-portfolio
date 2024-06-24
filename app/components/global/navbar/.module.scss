@@ -1,21 +1,16 @@
-$navbar-height: 75px;
+@import '../../../utils/scss/__general_imports';
 
-@mixin flex($dir, $al, $jc){
-  display: flex;
-  flex-direction: $dir;
-  align-items: $al;
-  justify-content: $jc;
-}
-
-.nav{
+.nav {
   z-index: 1000;
   overflow: hidden;
   position: fixed;
-  left: 50%; bottom: 0.75 * $navbar-height;
+  @include pos($x: 50%, $y: 0.75 * $navbar-height, $isTop: false);
 
-  translate: -50% 8px; opacity: 0.5;
+  translate: -50% 0.75rem;
+  opacity: 0.5;
   transition: all 150ms;
-  &:hover{
+
+  &:hover {
     translate: -50% 0;
     opacity: 1;
   }
@@ -23,25 +18,24 @@ $navbar-height: 75px;
   height: $navbar-height;
 
   background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 100%);
-  
+
   $halfWhite: rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   border-right: 1px solid $halfWhite;
   border-bottom: 1px solid $halfWhite;
 
   @include flex(row, center, center);
 
-  
 
-
-
-  @mixin transitions(){
+  @mixin transitions() {
     transition: width 300ms, opacity 300ms;
   }
 
+  >* {
+    height: 100%;
+  }
 
-  > * { height: 100%; }
-  > div{
+  >div {
     flex-grow: 1;
     width: $navbar-height;
 
@@ -49,25 +43,26 @@ $navbar-height: 75px;
     @include transitions();
   }
 
-  > ul{
+  >ul {
     @include flex(row, unset, unset);
     overflow: hidden;
 
     @include transitions();
 
-    $marginRightNav: 12px;
-    > li{
+    $marginRightNav: 1rem;
+
+    >li {
       position: relative;
       width: $navbar-height;
       margin-right: $marginRightNav;
-      > a{
+
+      >a {
         display: block;
         position: relative;
-        width: 100%; height: 100%;
-        > span{
-          position: absolute;
-          top: 50%; left: 50%;
-          translate: -50% -50%;
+        @include dim(100%, 100%);
+
+        >span {
+          @include absoluteCentered();
         }
       }
     }
@@ -81,7 +76,7 @@ $navbar-height: 75px;
 
 
 
-.r{
+.r {
   cursor: pointer;
   font-family: var(--font-syne);
   $time: 300ms;
@@ -90,16 +85,27 @@ $navbar-height: 75px;
   animation: hoverRback $time forwards ease-in-out;
   font-size: 1.6em;
 
-  &:hover{
+  &:hover {
     animation: hoverR $time forwards ease-in-out;
   }
 
   @keyframes hoverRback {
-    0%{ font-variation-settings: "wght" 800, "GRAD" 88; }
-    100%{ font-variation-settings: "wght" 740, "GRAD" 88; }
+    0% {
+      font-variation-settings: "wght" 800, "GRAD" 88;
+    }
+
+    100% {
+      font-variation-settings: "wght" 740, "GRAD" 88;
+    }
   }
+
   @keyframes hoverR {
-    0%{ font-variation-settings: "wght" 740, "GRAD" 88; }
-    100%{ font-variation-settings: "wght" 800, "GRAD" 88; }
+    0% {
+      font-variation-settings: "wght" 740, "GRAD" 88;
+    }
+
+    100% {
+      font-variation-settings: "wght" 800, "GRAD" 88;
+    }
   }
 }

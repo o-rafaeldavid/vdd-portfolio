@@ -1,0 +1,35 @@
+@mixin flex($dir, $al, $jc) {
+    display: flex;
+    flex-direction: $dir;
+    align-items: $al;
+    justify-content: $jc;
+}
+
+@mixin dim($width: auto, $height: auto) {
+    width: $width;
+    height: $height;
+}
+
+@mixin pos($x: 0, $y: 0, $isLeft: true, $isTop: true) {
+    @if ($isLeft) {
+        left: $x;
+    }
+
+    @else {
+        right: $x;
+    }
+
+    @if ($isTop) {
+        top: $y;
+    }
+
+    @else {
+        bottom: $y;
+    }
+}
+
+@mixin absoluteCentered() {
+    position: absolute;
+    @include pos($x: 50%, $y: 50%);
+    translate: -50% -50%;
+}

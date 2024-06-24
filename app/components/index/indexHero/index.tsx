@@ -13,7 +13,7 @@ const IndexHero = () => {
         >
             <div className={indexHeroStyle.mensagemHero}>
                 <MyRoles />
-                <DynamicHeading>CONSTRUINDO CRIAÇÕES NA WEB</DynamicHeading>
+                <DynamicHeading>DANDO CRIAÇÕES À WEB</DynamicHeading>
             </div>
         </Viewports.withSafespace>
     )

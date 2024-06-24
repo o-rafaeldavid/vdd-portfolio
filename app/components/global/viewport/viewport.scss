@@ -1,5 +1,5 @@
-$navbar-height: 75px;
-$viewportMargin: 12px;
+@import '../../../utils/scss/__general_imports';
+$viewportMargin: 1rem;
 
 div.viewport {
     position: relative;

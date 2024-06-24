@@ -1,5 +1,6 @@
 "use client"
 
+import BlurBackground from "./components/global/blurBackground"
 import Navbar from "./components/global/navbar"
 
 type BodyProps = {
@@ -10,6 +11,7 @@ type BodyProps = {
 export default function Body({ children, className }: BodyProps) {
     return (
         <body className={className}>
+            <BlurBackground />
             <Navbar />
             {children}
         </body>

@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from "react"
-import { mapear } from "@/app/lib/general"
+import { mapear } from "@/app/utils/common/mapear"
 
 type minMax = {
     min: number,
