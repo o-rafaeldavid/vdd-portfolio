@@ -1,3 +1,5 @@
+@import '../../../../../utils/scss/general_style.scss';
+
 .notActive {
     transition: opacity 150ms;
 
@@ -20,13 +22,6 @@
 
         &:first-of-type {
             font-weight: 700;
-
-            @mixin auraFrame($wx, $wy, $wb,
-                $ax, $ay, $ab,
-                $vx, $vy, $vb ) {
-                filter:
-                    drop-shadow(white $wx $wy $wb) drop-shadow(var(--background) 0 0 6px) drop-shadow(var(--azul-eletrico) $ax $ay $ab) drop-shadow(var(--verde-agua) $vx $vy $vb);
-            }
 
             @keyframes aura {
 

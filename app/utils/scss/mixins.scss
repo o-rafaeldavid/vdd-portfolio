@@ -44,3 +44,10 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 100%);
     backdrop-filter: blur(5rem);
 }
+
+@mixin auraFrame($wx, $wy, $wb,
+    $ax, $ay, $ab,
+    $vx, $vy, $vb ) {
+    filter:
+        drop-shadow(white $wx $wy $wb) drop-shadow($background 0 0 6px) drop-shadow($azul-eletrico $ax $ay $ab) drop-shadow($verde-agua $vx $vy $vb);
+}

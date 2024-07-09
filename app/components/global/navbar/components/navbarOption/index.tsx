@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Url } from "next/dist/shared/lib/router/router";
-import navbarOptionStyle from "./.module.scss"
 import GradientSpan from "../../../gradientSpan";
+import style from "./.module.scss"
 
 type NavbarProps = {
     href: Url,
@@ -12,7 +12,7 @@ type NavbarProps = {
 const NavbarOption = ({ href, nome, active }: NavbarProps) => {
     return (
         <li>
-            <Link href={href} className={active ? navbarOptionStyle.active : navbarOptionStyle.notActive}>
+            <Link href={href} className={active ? style.active : style.notActive}>
                 {active ? <GradientSpan>{nome}</GradientSpan> : <span>{nome}</span>}
                 <span className="glow">{nome}</span>
             </Link>

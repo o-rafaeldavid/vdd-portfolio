@@ -3,9 +3,13 @@
 import { HasReactNodeChilldren } from "@/app/utils/types/childrenTypes"
 import style from './.module.scss'
 
-const GradientSpan = ({ children }: HasReactNodeChilldren) => {
+type GradientSpanProps = HasReactNodeChilldren & {
+    className?: string
+}
+
+const GradientSpan = ({ children, className }: GradientSpanProps) => {
     return (
-        <span className={style.gradientSpan}>
+        <span className={`${style.gradientSpan} ${className}`}>
             {children}
         </span>
     )

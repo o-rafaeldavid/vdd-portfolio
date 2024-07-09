@@ -2,6 +2,7 @@
 import GradientSpan from "../../global/gradientSpan"
 import Viewport from "../../global/viewport"
 import indexHeroStyle from "./.module.scss"
+import MyRoles from "./myRoles"
 
 const IndexHero = () => {
     return (
@@ -15,7 +16,7 @@ const IndexHero = () => {
                 <br /><br />
                 <h2>Searching for<br /><GradientSpan>value</GradientSpan> on web?</h2>
                 <br /><br />
-                <h5>creative developer</h5>
+                <MyRoles />
             </div>
         </Viewport>
     )
