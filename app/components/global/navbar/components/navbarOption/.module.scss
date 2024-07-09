@@ -19,10 +19,6 @@
         }
 
         &:first-of-type {
-            background: -webkit-linear-gradient(135deg, var(--azul-eletrico), var(--verde-agua));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
             font-weight: 700;
 
             @mixin auraFrame($wx, $wy, $wb,
