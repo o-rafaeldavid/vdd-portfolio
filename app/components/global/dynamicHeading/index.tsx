@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useAnimationFrame } from "framer-motion"
 import DynamicSpan from "./components/dynamicSpan"
 
@@ -9,16 +9,18 @@ type DynamicHeadingProps = {
     eachSpan?: number,
     delaySpan?: number,
     betweenAnimations?: number,
-    step?: number
+    step?: number,
+    mappingWeight?: { min: number, max: number }
 }
 
-const DynamicHeading = ({
+const DynamicText = ({
     children,
     className, id,
     eachSpan = 500,
     delaySpan = 20,
     betweenAnimations = 100,
-    step = 2
+    step = 2,
+    mappingWeight = { min: 720, max: 800 }
 }: DynamicHeadingProps) => {
 
     const childrenArray = children.split('')
@@ -30,7 +32,8 @@ const DynamicHeading = ({
     })
 
     return (
-        <h1
+        <span
+            style={{ fontFamily: 'var(--font-syne)', fontSize: '1.5rem' }}
             className={`${(className !== undefined) ? (" " + className) : ""}`}
             id={`${(id !== undefined) ? (" " + id) : ""}`}
         >
@@ -42,15 +45,15 @@ const DynamicHeading = ({
                             <DynamicSpan
                                 key={`char-${char}-${index}`}
                                 interval={{ min: delayBetween, max: eachSpan + delayBetween }}
-                                mappingWeight={{ min: 720, max: 800 }}
+                                mappingWeight={mappingWeight}
                                 actualCounter={counter % maxCounter}
                             >{char}</DynamicSpan>
                         )
                     }
                 )
             }
-        </h1>
+        </span>
     )
 }
 
-export default DynamicHeading
+export default DynamicText
