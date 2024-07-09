@@ -1,65 +1,60 @@
-
-
-.notActive{
+.notActive {
     transition: opacity 150ms;
-    &:hover{
+
+    &:hover {
         opacity: 0.6;
     }
 }
 
 
-.active{
-    &:hover > span:last-of-type{ opacity: 1; }
-    > span{
-        &:last-of-type{
+.active {
+    &:hover>span:last-of-type {
+        opacity: 1;
+    }
+
+    >span {
+        &:last-of-type {
             opacity: 0;
             transition: opacity 300ms;
         }
 
-        &:first-of-type{
+        &:first-of-type {
             background: -webkit-linear-gradient(135deg, var(--azul-eletrico), var(--verde-agua));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
 
             font-weight: 700;
 
-                    @mixin auraFrame(
-                        $wx, $wy, $wb,
-                        $ax, $ay, $ab,
-                        $vx, $vy, $vb
-                    ){
-                        filter:
-                            drop-shadow(white $wx $wy $wb)
-                            drop-shadow(var(--background) 0 0 6px)
-                            drop-shadow(var(--azul-eletrico) $ax $ay $ab)
-                            drop-shadow(var(--verde-agua) $vx $vy $vb);
-                    }
+            @mixin auraFrame($wx, $wy, $wb,
+                $ax, $ay, $ab,
+                $vx, $vy, $vb ) {
+                filter:
+                    drop-shadow(white $wx $wy $wb) drop-shadow(var(--background) 0 0 6px) drop-shadow(var(--azul-eletrico) $ax $ay $ab) drop-shadow(var(--verde-agua) $vx $vy $vb);
+            }
 
-                    @keyframes aura {
-                        0%, 100%{
-                            @include auraFrame(
-                                0, 0, 20px,
-                                20px, 10px, 10px,
-                                -10px, -40px, 12px
-                            );
-                        }
-                        30%{
-                            @include auraFrame(
-                                5px, -3px, 15px,
-                                30px, -20px, 16px,
-                                16px, 30px, 20px
-                            );
-                        }
-                        70%{
-                            @include auraFrame(
-                                -5px, 7px, 8px,
-                                -14px, 34px, 22px,
-                                30px, -24px, 12px
-                            );
-                        }
-                    }
+            @keyframes aura {
 
-            
+                0%,
+                100% {
+                    @include auraFrame(0, 0, 20px,
+                        20px, 10px, 10px,
+                        -10px, -40px, 12px);
+                }
+
+                30% {
+                    @include auraFrame(5px, -3px, 15px,
+                        30px, -20px, 16px,
+                        16px, 30px, 20px);
+                }
+
+                70% {
+                    @include auraFrame(-5px, 7px, 8px,
+                        -14px, 34px, 22px,
+                        30px, -24px, 12px);
+                }
+            }
+
+
             animation: aura 4s infinite linear;
         }
     }
