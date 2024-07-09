@@ -1,7 +1,7 @@
 "use client"
 
 import BlurBackground from "./components/global/blurBackground"
-import DynamicText from "./components/global/dynamicHeading"
+import DynamicText from "./components/global/dynamicText"
 import Navbar from "./components/global/navbar"
 
 type BodyProps = {
