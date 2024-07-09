@@ -2,8 +2,8 @@
 
 #myRoles {
     >span {
-        @include auraFrame(0, 0, 20px,
-            20px, 10px, 50px,
-            -10px, -40px, 52px);
+        @include auraFrameAlpha(0, 0, 20px, 0.1,
+            6px, 6px, 14px, 0.3,
+            -6px, -6px, 14px, 0.3);
     }
 }

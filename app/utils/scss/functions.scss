@@ -1,0 +1,7 @@
+@function azulEletricoAlpha($alpha) {
+    @return rgba(0, 178, 255, $alpha);
+}
+
+@function verdeAguaAlpha($alpha) {
+    @return rgba(0, 255, 194, $alpha);
+}
