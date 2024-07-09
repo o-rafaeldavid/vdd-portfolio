@@ -1,0 +1,27 @@
+@import '../../../utils/scss/general_style';
+
+.dynamic,
+.noDynamic {
+    box-sizing: border-box;
+}
+
+.noDynamic {
+    @include dim(100dvw, 100dvh);
+}
+
+.dynamic {
+    @include dim(100dvw, auto);
+    min-height: 100dvh;
+}
+
+.withPaddingSide {
+    padding: 0 $navbar-margin-bottom;
+}
+
+.withPaddingTop {
+    padding-top: $navbar-margin-bottom + 2rem;
+}
+
+.withPaddingBottom {
+    padding-bottom: $navbar-margin-bottom * 2 + $navbar-height;
+}
