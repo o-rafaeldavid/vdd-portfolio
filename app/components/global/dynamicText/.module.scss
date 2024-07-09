@@ -1,0 +1,12 @@
+@import '../../../utils/scss/__general_imports';
+
+#dynamicText {
+    margin-top: 1.5rem;
+    position: fixed;
+    @include pos(50%, 0);
+
+    translate: -50% 0;
+    font-family: var(--font-syne);
+    font-size: 1.5rem;
+    text-align: center;
+}

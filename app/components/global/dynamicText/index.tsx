@@ -2,10 +2,10 @@
 import React, { useState } from "react"
 import { useAnimationFrame } from "framer-motion"
 import DynamicSpan from "./components/dynamicSpan"
+import style from './.module.scss'
 
 type DynamicHeadingProps = {
     children: string,
-    className?: string, id?: string,
     eachSpan?: number,
     delaySpan?: number,
     betweenAnimations?: number,
@@ -15,7 +15,6 @@ type DynamicHeadingProps = {
 
 const DynamicText = ({
     children,
-    className, id,
     eachSpan = 500,
     delaySpan = 20,
     betweenAnimations = 100,
@@ -33,9 +32,7 @@ const DynamicText = ({
 
     return (
         <span
-            style={{ fontFamily: 'var(--font-syne)', fontSize: '1.5rem' }}
-            className={`${(className !== undefined) ? (" " + className) : ""}`}
-            id={`${(id !== undefined) ? (" " + id) : ""}`}
+            id={style.dynamicText}
         >
             {
                 childrenArray.map(
