@@ -11,15 +11,17 @@ const allRoles: string[] = [
     "front-end developer",
 ]
 
-const MyRoles = ({ delay = 2000, transition = 600 }: { delay: number, transition: number }) => {
+const MyRoles = ({ delay = 2000, transition = 600 }: { delay?: number, transition?: number }) => {
     const [counter, setCounter] = useState<number>(0)
     const [oldTime, setOldTime] = useState<number>(0)
     const transitionRef = useRef<boolean>(false)
+
     useAnimationFrame((time) => {
         const nowTime = time % delay
         if (nowTime < oldTime && time !== 0) transitionRef.current = true
         setOldTime(nowTime)
     })
+
     useEffect(() => {
         let timeoutTransition: number | Timer = -1
         let timeoutCounter: number | Timer = -1
