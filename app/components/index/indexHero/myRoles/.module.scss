@@ -1,9 +1,64 @@
 @import '../../../../utils/scss/general_style.scss';
 
 #myRoles {
+    @include auraFrameAlpha(0, 0, 20px, 0.1,
+        6px, 6px, 14px, 0.3,
+        -6px, -6px, 14px, 0.3);
+
     >span {
-        @include auraFrameAlpha(0, 0, 20px, 0.1,
-            6px, 6px, 14px, 0.3,
-            -6px, -6px, 14px, 0.3);
+        &:last-of-type {
+            position: absolute;
+            @include pos(50%, 0);
+            translate: -50% 0;
+            opacity: 0;
+        }
+    }
+
+    &.transition>span {
+        &:first-of-type {
+            animation: transitionGlowBack var(--transitionTime) forwards;
+        }
+
+        &:last-of-type {
+            animation: transitionGlowFront var(--transitionTime) forwards;
+        }
+    }
+}
+
+/*  */
+@mixin blurWhite($blur) {
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur($blur);
+
+}
+
+@keyframes transitionGlowFront {
+
+    0%,
+    100% {
+        opacity: 0;
+        filter: blur(0);
+        scale: 1;
+    }
+
+    50% {
+        opacity: 1;
+        @include blurWhite(0.3rem);
+        scale: 1.05;
+    }
+}
+
+
+@keyframes transitionGlowBack {
+
+    0%,
+    100% {
+        filter: blur(0);
+    }
+
+    50% {
+        @include blurWhite(0.7rem);
     }
 }
