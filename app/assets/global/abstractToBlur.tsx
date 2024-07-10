@@ -1,4 +1,27 @@
-const AbstractToBlur = ({ blur, fill, opacity }: { blur: string, fill: string, opacity: number }) => {
+type AbstractToBlurType = {
+    blur: string,
+    fill: string,
+    opacity: number,
+    top?: number | string,
+    left?: number | string,
+    right?: number | string,
+    bottom?: number | string,
+    rotate?: string,
+    scale?: number
+}
+
+const AbstractToBlur = (
+    {
+        blur,
+        fill,
+        opacity,
+        top = 0,
+        left = 0,
+        right = 'unset',
+        bottom = 'unset',
+        rotate,
+        scale,
+    }: AbstractToBlurType) => {
     return (
         <svg
             width="721"
@@ -7,8 +30,15 @@ const AbstractToBlur = ({ blur, fill, opacity }: { blur: string, fill: string, o
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             style={{
+                position: "absolute",
                 filter: `blur(${blur})`,
-                opacity: opacity
+                opacity: opacity,
+                top: (bottom === 'unset') ? top : 'unset',
+                left: (right === 'unset') ? left : 'unset',
+                right: right,
+                bottom: bottom,
+                rotate: rotate,
+                scale: scale
             }}
         >
             <path
