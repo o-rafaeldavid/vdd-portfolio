@@ -31,7 +31,7 @@ const DynamicText = ({
     })
 
     return (
-        <span
+        <h5
             id={style.dynamicText}
         >
             {
@@ -49,7 +49,7 @@ const DynamicText = ({
                     }
                 )
             }
-        </span>
+        </h5>
     )
 }
 
