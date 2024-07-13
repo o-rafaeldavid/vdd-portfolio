@@ -3,7 +3,6 @@
 import { HasReactNodeChilldren } from "@/app/utils/types/childrenTypes"
 import viewport_style from './.module.scss'
 
-
 type ViewportProps = HasReactNodeChilldren & {
     dynamic?: boolean
     withPaddingSide?: boolean
