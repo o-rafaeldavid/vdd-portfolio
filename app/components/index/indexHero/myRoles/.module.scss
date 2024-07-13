@@ -5,23 +5,48 @@
         6px, 6px, 14px, 0.3,
         -6px, -6px, 14px, 0.3);
 
+    @include phone {
+        margin-left: 0.1rem;
+    }
+
     >span {
+        text-wrap: nowrap;
+
+        @include phone {
+            transform-origin: left center;
+        }
+
         &:last-of-type {
             position: absolute;
             @include pos(50%, 0);
             translate: -50% 0;
+
+            @include phone {
+                @include pos(0, 0);
+                translate: 0 0;
+            }
+
             opacity: 0;
         }
     }
 
     &.transition>span {
+
         &:first-of-type {
             animation: transitionGlowBack var(--transitionTime) forwards;
         }
 
         &:last-of-type {
-            animation: transitionGlowFront var(--transitionTime) forwards;
+            animation: transitionGlowFrontBig var(--transitionTime) forwards;
+
+            @include phone {
+                animation: transitionGlowFrontSmall var(--transitionTime) forwards;
+            }
         }
+    }
+
+    @include phone {
+        text-align: left;
     }
 }
 
@@ -34,7 +59,7 @@
 
 }
 
-@keyframes transitionGlowFront {
+@keyframes transitionGlowFrontBig {
 
     0%,
     100% {
@@ -47,6 +72,22 @@
         opacity: 1;
         @include blurWhite(0.3rem);
         scale: 1.05;
+    }
+}
+
+@keyframes transitionGlowFrontSmall {
+
+    0%,
+    100% {
+        opacity: 0;
+        filter: blur(0);
+        scale: 1;
+    }
+
+    50% {
+        opacity: 1;
+        @include blurWhite(0.3rem);
+        scale: 0.93;
     }
 }
 
