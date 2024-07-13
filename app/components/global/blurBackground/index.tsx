@@ -6,7 +6,7 @@ const BlurBackground = () => {
     const { width, height } = useWindowSize()
     const mediumDesktop = () => width! > 1400
     const biggerThanTablet = () => width! > 1024
-    const biggerThanMobile = () => width! > 768
+    const biggerThanMobile = () => width! > 550
     const mediumHeight = () => height! > 800
     return (
         <div id={blurBackgroundStyle.blurDiv}>

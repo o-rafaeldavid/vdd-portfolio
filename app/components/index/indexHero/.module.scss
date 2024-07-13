@@ -2,4 +2,16 @@
 
 #mensagemHero {
     @include flex($jc: center, $al: center);
+
+    @include phone {
+        align-items: flex-start;
+    }
+
+    >div {
+        >h2 {
+            @include phone {
+                text-align: left;
+            }
+        }
+    }
 }
