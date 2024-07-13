@@ -5,13 +5,4 @@
     position: absolute;
     z-index: -1;
     overflow: hidden;
-
-    /*  filter: blur(20em); */
-
-    >div {
-        position: absolute;
-        border-radius: 50%;
-        width: 20rem;
-        aspect-ratio: 1 / 1;
-    }
 }
