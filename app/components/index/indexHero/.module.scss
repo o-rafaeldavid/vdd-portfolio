@@ -8,6 +8,14 @@
     }
 
     >div {
+        @include phone {
+            margin: 1rem;
+        }
+
+        @include small-phone {
+            margin: 0;
+        }
+
         >h2 {
             @include phone {
                 text-align: left;

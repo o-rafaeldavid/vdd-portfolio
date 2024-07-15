@@ -13,7 +13,7 @@ const BlurBackground = () => {
             {/* Azul Cima Esquerda */}
             <AbstractToBlur
                 blur={biggerThanTablet() ? '16rem' : (biggerThanMobile() && mediumHeight()) ? '10rem' : '14rem'}
-                opacity={biggerThanTablet() ? 0.4 : (biggerThanMobile() && mediumHeight()) ? 0.2 : 0.4}
+                opacity={biggerThanTablet() ? 0.5 : (biggerThanMobile() && mediumHeight()) ? 0.3 : 0.4}
                 fill='azul-eletrico'
                 top={biggerThanTablet() ? '-5rem' : (biggerThanMobile() && mediumHeight()) ? '-10rem' : '0rem'}
                 left={mediumDesktop() ? '-17rem' : biggerThanTablet() ? '-23rem' : (biggerThanMobile() && mediumHeight()) ? '-15rem' : '-17rem'}

@@ -8,12 +8,27 @@
     position: relative;
 }
 
+html {
+    overflow: hidden;
+}
+
 body {
+    @include dim(100dvw, 100dvh);
     background-color: $background;
     font-family: var(--font-inter);
     color: white;
     overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+
+    >div.viewport {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
 }
+
+
 
 ul,
 ol {

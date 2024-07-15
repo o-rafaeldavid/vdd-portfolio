@@ -21,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Body className={`${inter.variable} ${syne.variable}`}>{children}</Body>
+      <Body
+        className={`${inter.variable} ${syne.variable}`}
+      >{children}</Body>
     </html>
   );
 }

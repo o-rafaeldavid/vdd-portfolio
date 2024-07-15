@@ -2,7 +2,7 @@
 
 #blurDiv {
     @include dim(100dvw, 100dvh);
-    position: absolute;
+    position: fixed;
     z-index: -1;
     overflow: hidden;
 }
