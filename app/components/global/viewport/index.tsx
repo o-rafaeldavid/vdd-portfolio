@@ -1,7 +1,7 @@
 "use client"
 
 import { HasReactNodeChilldren } from "@/app/utils/types/childrenTypes"
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import viewport_style from './.module.scss'
 
@@ -14,6 +14,7 @@ type ViewportProps = HasReactNodeChilldren & {
     id?: string
     className?: string
     doNotFade?: boolean
+    onViewEnter?: () => void
 }
 
 const Viewport = ({
@@ -25,7 +26,8 @@ const Viewport = ({
     style,
     id,
     className,
-    doNotFade = false
+    doNotFade = false,
+    onViewEnter
 }: ViewportProps) => {
     const viewportRef = useRef<HTMLDivElement>(null)
     const bodyRef = useRef<any>(null)
@@ -50,6 +52,10 @@ const Viewport = ({
     const isView = useInView(viewportRef, {
         margin: "-1px"
     })
+
+    useEffect(() => {
+        if (isView && onViewEnter !== undefined) onViewEnter()
+    }, [isView])
 
 
     return (

@@ -1,6 +1,6 @@
 @import '../../../utils/scss/general_style';
 
-#mensagemHero {
+#indexHero {
     @include flex($jc: center, $al: center);
 
     @include phone {

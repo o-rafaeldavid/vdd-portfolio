@@ -1,0 +1,15 @@
+@import '../../../utils/scss/general_style';
+
+#indexMission {
+    @include grid(2, 1, 1rem);
+
+    >div {
+        &:first-of-type>h2 {
+            text-align: left;
+        }
+
+        &:last-of-type {
+            text-align: right;
+        }
+    }
+}

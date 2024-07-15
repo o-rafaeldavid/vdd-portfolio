@@ -2,15 +2,15 @@
 import { useWindowSize } from "@uidotdev/usehooks"
 import GradientSpan from "../../global/gradientSpan"
 import Viewport from "../../global/viewport"
-import indexHeroStyle from "./.module.scss"
 import MyRoles from "./myRoles"
+import index_hero_style from "./.module.scss"
 
 const IndexHero = () => {
     const { width } = useWindowSize()
     const biggerThanMobile = () => width! > 550
     return (
         <Viewport
-            id={indexHeroStyle.mensagemHero}
+            id={index_hero_style.indexHero}
             withPaddingTop
             withPaddingBottom
             withPaddingSide

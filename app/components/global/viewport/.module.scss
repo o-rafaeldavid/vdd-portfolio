@@ -15,7 +15,7 @@
 }
 
 .withPaddingSide {
-    padding: 0 $navbar-margin-bottom;
+    padding: 0 2 * $navbar-margin-bottom;
 
     @include phone {
         padding: 0 $navbar-small-margin-bottom;
@@ -23,7 +23,7 @@
 }
 
 .withPaddingTop {
-    padding-top: $navbar-margin-bottom + 2rem;
+    padding-top: $navbar-margin-bottom + 4rem;
 
     @include phone {
         padding-top: $navbar-small-margin-bottom + 2rem;

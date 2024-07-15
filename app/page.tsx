@@ -4,7 +4,8 @@ import IndexTheMission from "./components/index/indexTheMission";
 const Home = () => {
   return (
     <>
-      <IndexHero /><IndexHero /><IndexHero />
+      <IndexHero />
+      <IndexTheMission />
     </>
   );
 }
