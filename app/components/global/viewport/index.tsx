@@ -48,6 +48,7 @@ const Viewport = ({
     }, [])
 
     const isView = useInView(viewportRef, {
+        margin: "-1px"
     })
 
 
