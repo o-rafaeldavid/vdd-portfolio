@@ -1,8 +1,8 @@
 "use client"
 
 import { HasReactNodeChilldren } from "@/app/utils/types/childrenTypes"
-import { use, useEffect, useRef, useState } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import viewport_style from './.module.scss'
 
 type ViewportProps = HasReactNodeChilldren & {
@@ -31,19 +31,6 @@ const Viewport = ({
 }: ViewportProps) => {
     const viewportRef = useRef<HTMLDivElement>(null)
     const bodyRef = useRef<any>(null)
-
-    const { scrollYProgress } = useScroll({
-        target: viewportRef,
-        container: bodyRef,
-        offset: ["0 end", "1px end"],
-        layoutEffect: false
-    })
-
-    const hadShown = useTransform(
-        scrollYProgress,
-        [0, 1],
-        [0, 1],
-    )
 
     useEffect(() => {
         if (bodyRef.current == null) bodyRef.current = document.body

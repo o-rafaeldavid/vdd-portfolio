@@ -1,15 +1,39 @@
 @import '../../../utils/scss/general_style';
 
 #indexMission {
-    @include grid(2, 1, 1rem);
+    @include flex($dir: row, $gap: $navbar-margin-bottom);
 
     >div {
-        &:first-of-type>h2 {
-            text-align: left;
+        &:first-of-type {
+            @include dim(auto, 100%);
+            flex: 0 1 auto;
+
+            >h2 {
+                text-align: left;
+            }
         }
 
         &:last-of-type {
-            text-align: right;
+            @include dim(auto, calc(100% - 6rem));
+            margin-top: 6rem;
+            flex: 1 0 auto;
+
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+
+            >div>h3 {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                text-align: right;
+            }
+
+            >div {
+                @include dim(auto, calc(100% + 3rem));
+                position: sticky;
+                scroll-snap-align: start;
+            }
         }
     }
 }
