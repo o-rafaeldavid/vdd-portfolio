@@ -31,7 +31,7 @@ const Viewport = ({
     id,
     className,
     doNotFade = false,
-    onViewEnter
+    onViewEnter,
 }: ViewportProps) => {
     const viewportRef = useRef<HTMLDivElement>(null)
     const bodyRef = useRef<any>(null)

@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import { motion, useScroll } from "framer-motion"
+import { motion, useMotionValueEvent, useScroll } from "framer-motion"
 import { HasReactNodeChildren } from "@/app/utils/types/childrenTypes"
 
 /**
@@ -21,12 +21,14 @@ type Edge = EdgeString | number
 type MissionSentenceLineType = HasReactNodeChildren & {
     finalOffset: Edge
     containerRef: React.RefObject<HTMLDivElement>
+    onScrollProgress?: [(latest: number) => void]
 }
 
 const MissionSentenceLine = ({
     children,
     finalOffset,
-    containerRef
+    containerRef,
+    onScrollProgress
 }: MissionSentenceLineType) => {
     const headingRef = useRef<HTMLHeadingElement>(null)
     const { scrollYProgress } = useScroll({
@@ -35,6 +37,11 @@ const MissionSentenceLine = ({
         offset: ["start 80%", `start ${finalOffset}`],
         layoutEffect: false
     })
+
+    onScrollProgress?.forEach((fun) => {
+        useMotionValueEvent(scrollYProgress, 'change', fun)
+    })
+
     return (
         <motion.h3
             ref={headingRef}
