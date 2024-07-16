@@ -1,11 +1,11 @@
 "use client"
 
-import { HasReactNodeChilldren } from "@/app/utils/types/childrenTypes"
+import { HasReactNodeChildren } from "@/app/utils/types/childrenTypes"
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import viewport_style from './.module.scss'
 
-type ViewportProps = HasReactNodeChilldren & {
+type ViewportProps = HasReactNodeChildren & {
     dynamic?: boolean
     withPaddingSide?: boolean
     withPaddingTop?: boolean

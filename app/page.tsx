@@ -6,6 +6,7 @@ const Home = () => {
     <>
       <IndexHero />
       <IndexTheMission />
+      <IndexHero />
     </>
   );
 }

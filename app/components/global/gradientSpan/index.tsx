@@ -1,9 +1,9 @@
 "use client"
 
-import { HasReactNodeChilldren } from "@/app/utils/types/childrenTypes"
+import { HasReactNodeChildren } from "@/app/utils/types/childrenTypes"
 import style from './.module.scss'
 
-type GradientSpanProps = HasReactNodeChilldren & {
+type GradientSpanProps = HasReactNodeChildren & {
     className?: string
 }
 

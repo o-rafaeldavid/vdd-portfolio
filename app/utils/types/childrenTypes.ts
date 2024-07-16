@@ -4,6 +4,6 @@ export type HasChilldren<T> = {
     children?: T
 }
 
-export type HasReactNodeChilldren = {
+export type HasReactNodeChildren = {
     children?: ReactNode | ReactNode[]
 }
