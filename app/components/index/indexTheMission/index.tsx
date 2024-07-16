@@ -23,7 +23,11 @@ const IndexTheMission = () => {
             id={index_themission_style.indexMission}
             withPaddingTop
             withPaddingSide
-            onViewEnter={() => /* setBodyIsScrolling(false) */}
+            onViewEnter={{
+                delay: 100,
+                amount: 0.9,
+                function: () => setBodyIsScrolling(false)
+            }}
         >
             <div>
                 <h2>The Mission</h2>

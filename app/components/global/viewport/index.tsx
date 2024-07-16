@@ -14,7 +14,11 @@ type ViewportProps = HasReactNodeChildren & {
     id?: string
     className?: string
     doNotFade?: boolean
-    onViewEnter?: () => void
+    onViewEnter?: {
+        function: () => void
+        delay: number
+        amount: number | "some" | "all"
+    }
 }
 
 const Viewport = ({
@@ -37,12 +41,23 @@ const Viewport = ({
     }, [])
 
     const isView = useInView(viewportRef, {
-        margin: "-1px"
+        margin: "-1px",
+    })
+
+    const isViewFunction = useInView(viewportRef, {
+        amount: onViewEnter?.amount || 0
     })
 
     useEffect(() => {
-        if (isView && onViewEnter !== undefined) onViewEnter()
-    }, [isView])
+        let timeout: Timer
+
+        if (isViewFunction && onViewEnter !== undefined) timeout = setTimeout(() => {
+            onViewEnter.function()
+            return () => clearTimeout(timeout)
+        }, onViewEnter.delay)
+
+        return () => clearTimeout(timeout)
+    }, [isViewFunction])
 
 
     return (
