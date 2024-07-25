@@ -7,8 +7,6 @@ import Viewport from "../../global/viewport"
 import MissionSentenceLine from "./missionSentenceLine"
 import index_themission_style from "./.module.scss"
 
-//////////////////////////////////////
-//////////////////////////////////////
 type ScrollState = {
     firstLineScrolled: boolean
     lastLineScrolled: boolean
@@ -20,6 +18,13 @@ type ScrollAction =
     | { type: 'LAST_LINE_SCROLLED'; payload: boolean }
     | { type: 'WHEEL_DIRECTION'; payload: 'up' | 'down' }
 
+/**
+ * scrollReducer e initialScrollState são usados para controlar stated data relativas às linhas de texto
+ * AÇÕES:
+ * - FIRST_LINE_SCROLLED: indica se a primeira linha de texto está visível
+ * - LAST_LINE_SCROLLED: indica se a última linha de texto está visível
+ * - WHEEL_DIRECTION: indica a direção do scroll
+ */
 const initialScrollState: ScrollState = {
     firstLineScrolled: false,
     lastLineScrolled: false,
@@ -39,19 +44,17 @@ const scrollReducer = (state: ScrollState, action: ScrollAction): ScrollState =>
     }
 }
 
-//////////////////////////////////////
-//////////////////////////////////////
 const IndexTheMission = () => {
+    const { bodyIsScrolling, setBodyIsScrolling } = useContext(BodyScrollContext)
     const [scrollState, dispatch] = useReducer(scrollReducer, initialScrollState)
+    //container com scroll
     const containerRef = useRef<HTMLDivElement>(null)
+    // linhas da frase
     const missionLines = [
         <>Propelling <GradientSpan>the future</GradientSpan></>,
         <>and <GradientSpan>revolutionizing</GradientSpan> the present</>,
         <><GradientSpan>with efficient</GradientSpan> digital innovations</>
     ]
-
-    const { setBodyIsScrolling } = useContext(BodyScrollContext)
-
     /**
      * Se a primeira Linha desaparece ou se a última linha aparece, o body deve estar com scroll
      * Se a última linha desaparece ou se a primeira linha aparece, o body não deve estar com scroll
@@ -79,6 +82,9 @@ const IndexTheMission = () => {
         console.log(scrollState)
     }, [scrollState.firstLineScrolled, scrollState.lastLineScrolled])
 
+    /**
+     * @returns {JSX.Element} Retorna o componente IndexTheMission
+     */
     return (
         <Viewport
             id={index_themission_style.indexMission}
