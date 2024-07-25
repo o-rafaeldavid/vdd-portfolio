@@ -1,36 +1,26 @@
 @import '../../../utils/scss/general_style';
 
 #indexMission {
-    @include flex($dir: row, $gap: $navbar-margin-bottom);
+    >section {
+        @include dim(100%, 100%);
 
-    >div {
-        &:first-of-type {
-            @include dim(auto, 100%);
-            flex: 0 1 auto;
+        >h2 {
+            position: sticky;
+            @include pos(0, 0);
+            text-align: left;
+        }
 
-            >h2 {
-                text-align: left;
+        >section {
+            position: sticky;
+            @include pos(0, 6rem);
+
+            p {
+                text-align: right;
             }
         }
 
-        &:last-of-type {
-            @include dim(auto, calc(100% - 6rem));
-            margin-top: 6rem;
-            flex: 1 0 auto;
-
-            scroll-snap-type: y mandatory;
-
-            >div {
-                @include dim(auto, calc(100% + 3rem));
-                position: sticky;
-                scroll-snap-align: start;
-
-                >p {
-                    position: absolute;
-                    @include pos(0, 0, false, false);
-                    text-align: right;
-                }
-            }
+        >div {
+            @include dim(100%, 200%);
         }
     }
 }

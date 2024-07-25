@@ -21,14 +21,12 @@ type Edge = EdgeString | number
 type MissionSentenceLineType = HasReactNodeChildren & {
     finalOffset: Edge
     containerRef: React.RefObject<HTMLDivElement>
-    onScrollProgress?: [(latest: number) => void]
 }
 
 const MissionSentenceLine = ({
     children,
     finalOffset,
     containerRef,
-    onScrollProgress
 }: MissionSentenceLineType) => {
     const headingRef = useRef<HTMLHeadingElement>(null)
     const { scrollYProgress } = useScroll({
@@ -38,14 +36,10 @@ const MissionSentenceLine = ({
         layoutEffect: false
     })
 
-    onScrollProgress?.forEach((fun) => {
-        useMotionValueEvent(scrollYProgress, 'change', fun)
-    })
-
     return (
         <motion.p
             ref={headingRef}
-            style={{ opacity: scrollYProgress }}
+        /* style={{ opacity: scrollYProgress }} */
         >
             {children}
         </motion.p>
