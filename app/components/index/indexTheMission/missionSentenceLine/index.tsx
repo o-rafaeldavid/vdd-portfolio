@@ -43,12 +43,12 @@ const MissionSentenceLine = ({
     })
 
     return (
-        <motion.h3
+        <motion.p
             ref={headingRef}
             style={{ opacity: scrollYProgress }}
         >
             {children}
-        </motion.h3>
+        </motion.p>
     )
 }
 

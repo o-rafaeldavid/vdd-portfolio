@@ -25,7 +25,7 @@
                 position: sticky;
                 scroll-snap-align: start;
 
-                >h3 {
+                >p {
                     position: absolute;
                     @include pos(0, 0, false, false);
                     text-align: right;

@@ -109,11 +109,11 @@ const IndexTheMission = () => {
                 {missionLines.map((line, index) =>
                     <div
                         key={`missionSentenceLine-${index}`}
-                        style={{ top: `calc(-100% + ${16 * 3 * index}px)` }}
+                        style={{ top: `calc(-100% + ${16 * 3.5 * index}px)` }}
                     >
                         <MissionSentenceLine
                             containerRef={containerRef}
-                            finalOffset={`${16 * 3 * index}px`}
+                            finalOffset={`${16 * 3.5 * index}px`}
                             onScrollProgress={(index === 0 || index === missionLines.length - 1) ? [
                                 (latest) => {
                                     dispatch({
@@ -127,7 +127,7 @@ const IndexTheMission = () => {
                         </MissionSentenceLine>
                     </div>
                 )}
-                <div style={{ top: `calc(-100% + ${16 * 3 * missionLines.length}px)` }}></div>
+                <div style={{ top: `calc(-100% + ${16 * 3.5 * missionLines.length}px)` }}></div>
             </div>
         </Viewport >
     )
