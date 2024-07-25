@@ -12,15 +12,18 @@ import index_themission_style from "./.module.scss"
 type ScrollState = {
     firstLineScrolled: boolean
     lastLineScrolled: boolean
+    wheelDirection: 'up' | 'down'
 }
 
 type ScrollAction =
-    | { type: "FIRST_LINE_SCROLLED"; payload: boolean }
-    | { type: "LAST_LINE_SCROLLED"; payload: boolean }
+    | { type: 'FIRST_LINE_SCROLLED'; payload: boolean }
+    | { type: 'LAST_LINE_SCROLLED'; payload: boolean }
+    | { type: 'WHEEL_DIRECTION'; payload: 'up' | 'down' }
 
 const initialScrollState: ScrollState = {
     firstLineScrolled: false,
-    lastLineScrolled: false
+    lastLineScrolled: false,
+    wheelDirection: 'down'
 }
 
 const scrollReducer = (state: ScrollState, action: ScrollAction): ScrollState => {
@@ -29,6 +32,8 @@ const scrollReducer = (state: ScrollState, action: ScrollAction): ScrollState =>
             return { ...state, firstLineScrolled: action.payload }
         case "LAST_LINE_SCROLLED":
             return { ...state, lastLineScrolled: action.payload }
+        case "WHEEL_DIRECTION":
+            return { ...state, wheelDirection: action.payload }
         default:
             return state
     }
@@ -47,11 +52,32 @@ const IndexTheMission = () => {
 
     const { setBodyIsScrolling } = useContext(BodyScrollContext)
 
-    useEffect(() => {
-        if (scrollState.lastLineScrolled || !scrollState.firstLineScrolled) {
+    /**
+     * Se a primeira Linha desaparece ou se a última linha aparece, o body deve estar com scroll
+     * Se a última linha desaparece ou se a primeira linha aparece, o body não deve estar com scroll
+     * @see handleSentenceLine
+     * @see useHandleSentenceLine
+     */
+    const handleSentenceLine = {
+        first: {
+            toTop: () => scrollState.wheelDirection === 'down' && scrollState.firstLineScrolled, // primeira linha desaparece (vai para baixo)
+            toBottom: () => scrollState.wheelDirection === 'up' && !scrollState.firstLineScrolled // última linha aparece (vem para cima)
+        },
+        last: {
+            toTop: () => scrollState.wheelDirection === 'down' && scrollState.lastLineScrolled, // primeira linha aparece (vem para cima)
+            toBottom: () => scrollState.wheelDirection === 'up' && !scrollState.lastLineScrolled // última linha desaparece (vai para baixo)
+        }
+    }
+
+    const useHandleFirstSentenceLine = useEffect(() => {
+        if (handleSentenceLine.first.toBottom() || handleSentenceLine.last.toTop()) {
             setBodyIsScrolling(true)
         }
-    }, [scrollState.lastLineScrolled, scrollState.firstLineScrolled])
+        else if (handleSentenceLine.first.toTop() || handleSentenceLine.last.toBottom()) {
+            setBodyIsScrolling(false)
+        }
+        console.log(scrollState)
+    }, [scrollState.firstLineScrolled, scrollState.lastLineScrolled])
 
     return (
         <Viewport
@@ -63,11 +89,17 @@ const IndexTheMission = () => {
                 amount: 0.9,
                 function: () => setBodyIsScrolling(false)
             }}
+            onWheel={(e) => {
+                dispatch({
+                    type: 'WHEEL_DIRECTION',
+                    payload: ((e.deltaY < 0) ? 'up' : 'down')
+                })
+            }}
         >
             <div>
                 <h2>The Mission</h2>
             </div>
-            <div ref={containerRef}>
+            <div ref={containerRef} className="scrollable-container-y">
                 {missionLines.map((line, index) =>
                     <div
                         key={`missionSentenceLine-${index}`}
@@ -80,7 +112,7 @@ const IndexTheMission = () => {
                                 (latest) => {
                                     dispatch({
                                         type: (index === 0) ? "FIRST_LINE_SCROLLED" : "LAST_LINE_SCROLLED",
-                                        payload: latest === 1
+                                        payload: latest > 0.1
                                     })
                                 }
                             ] : undefined}

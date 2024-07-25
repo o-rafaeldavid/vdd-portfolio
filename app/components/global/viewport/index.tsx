@@ -1,7 +1,7 @@
 "use client"
 
 import { HasReactNodeChildren } from "@/app/utils/types/childrenTypes"
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, WheelEventHandler } from "react";
 import { motion, useInView } from "framer-motion";
 import viewport_style from './.module.scss'
 
@@ -19,6 +19,7 @@ type ViewportProps = HasReactNodeChildren & {
         delay: number
         amount: number | "some" | "all"
     }
+    onWheel?: WheelEventHandler<HTMLDivElement>
 }
 
 const Viewport = ({
@@ -32,6 +33,7 @@ const Viewport = ({
     className,
     doNotFade = false,
     onViewEnter,
+    onWheel
 }: ViewportProps) => {
     const viewportRef = useRef<HTMLDivElement>(null)
     const bodyRef = useRef<any>(null)
@@ -62,9 +64,10 @@ const Viewport = ({
 
     return (
         <motion.div
-            style={style}
             ref={viewportRef}
             id={id}
+            style={style}
+            onWheel={onWheel}
             className={`
                 viewport 
                 ${(dynamic)

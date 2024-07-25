@@ -32,6 +32,12 @@ body {
     }
 }
 
+.scrollable-container-y {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 1rem;
+}
+
 ::-webkit-scrollbar {
     width: 0.35rem;
     background-color: rgba(255, 255, 255, 0.2);
