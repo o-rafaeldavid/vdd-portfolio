@@ -7,6 +7,7 @@ import GradientSpan from "../../global/gradientSpan"
 import Viewport from "../../global/viewport"
 import MissionSentenceLine from "./missionSentenceLine"
 import index_themission_style from "./.module.scss"
+import { useWindow } from "@/app/utils/hooks/useWindow"
 
 const IndexTheMission = () => {
     // linhas da frase
@@ -29,11 +30,14 @@ const IndexTheMission = () => {
         offset: ['start end', 'end end']
     })
 
+    // detetar se chegámos ao fim do scroll
     const [isFinalScroll, setIsFinalScroll] = useState<boolean>(false)
     useMotionValueEvent(scrollYProgress, 'change', (latest) => {
         if (latest === 1) setIsFinalScroll(true)
     })
 
+    //definir a amount do onViewEnter depois do mount para obter a window
+    const window = useWindow()
     /**
      * @returns {JSX.Element} Retorna o componente IndexTheMission
      */
@@ -45,7 +49,7 @@ const IndexTheMission = () => {
             onViewEnter={{
                 function: () => { if (!isFinalScroll) setBodyIsScrolling(false) },
                 delay: 50,
-                amount: ((window.innerWidth - 10) / window.innerWidth) //obter a fração com menos 10px da tela (por conta da scroll bar)
+                amount: window ? ((window.innerWidth - 10) / window.innerWidth) : 'all' //obter a fração com menos 10px da tela (por conta da scroll bar)
             }}
         >
             <section
