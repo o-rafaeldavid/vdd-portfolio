@@ -1,48 +1,59 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useMotionValueEvent, useScroll } from "framer-motion"
+import { MotionValue, useAnimate, useMotionValueEvent, useTransform } from "framer-motion"
 import { HasReactNodeChildren } from "@/app/utils/types/childrenTypes"
-
-/**
- * from framer-motion:
- * node_modules/framer-motion/dist/index.d.ts
- * 
- * framer-motion github:
- * https://github.com/framer/motion/blob/c69c4128fbfd1aaab33979339a32f66393d431f7/packages/framer-motion/src/render/dom/scroll/types.ts#L40-L62
- */
-type SupportedEdgeUnit = "px" | "vw" | "vh" | "%"
-type EdgeUnit = `${number}${SupportedEdgeUnit}`
-type NamedEdges = "start" | "end" | "center"
-type EdgeString = NamedEdges | EdgeUnit | `${number}`
-type Edge = EdgeString | number
-///
+import { useLayoutEffect } from "react"
 
 type MissionSentenceLineType = HasReactNodeChildren & {
-    finalOffset: Edge
-    containerRef: React.RefObject<HTMLDivElement>
+    scrollYProgress: MotionValue<number>
+    input: [number, number]
+    outputBlur: [number, number]
+    outputOpacity: [number, number]
+    outputTranslateY: [number, number]
+    isFinalScroll: boolean
 }
 
 const MissionSentenceLine = ({
     children,
-    finalOffset,
-    containerRef,
+    scrollYProgress,
+    input,
+    outputBlur,
+    outputOpacity,
+    outputTranslateY,
+    isFinalScroll
 }: MissionSentenceLineType) => {
-    const headingRef = useRef<HTMLHeadingElement>(null)
-    const { scrollYProgress } = useScroll({
-        target: headingRef,
-        container: containerRef,
-        offset: ["start 80%", `start ${finalOffset}`],
-        layoutEffect: false
+    const [scope, animate] = useAnimate()
+    const transformedBlur = useTransform(scrollYProgress, input, outputBlur)
+    const transformedOpacity = useTransform(scrollYProgress, input, outputOpacity)
+    const transformedTranslateY = useTransform(scrollYProgress, input, outputTranslateY)
+
+    useLayoutEffect(() => {
+        animate("span", { filter: `blur(${outputBlur[0]}rem)` })
+        animate("span", { opacity: outputOpacity[0] })
+        animate("span", { translate: `0 ${outputTranslateY[0]}rem` })
+    }, [])
+
+    useMotionValueEvent(transformedBlur, 'change', (latest) => {
+        if (!isFinalScroll) animate("span", { filter: `blur(${latest}rem)` })
+    })
+    useMotionValueEvent(transformedOpacity, 'change', (latest) => {
+        if (!isFinalScroll) animate("span", { opacity: latest })
+    })
+    useMotionValueEvent(transformedTranslateY, 'change', (latest) => {
+        if (!isFinalScroll) animate("span", { translate: `0 ${latest}rem` })
+    })
+
+    useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+        if (isFinalScroll) {
+            animate("span", { filter: `blur(${outputBlur[1]}rem)` })
+            animate("span", { opacity: outputOpacity[1] })
+        }
     })
 
     return (
-        <motion.p
-            ref={headingRef}
-        /* style={{ opacity: scrollYProgress }} */
-        >
+        <p ref={scope}>
             {children}
-        </motion.p>
+        </p>
     )
 }
 

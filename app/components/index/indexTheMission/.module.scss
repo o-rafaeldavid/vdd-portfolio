@@ -1,26 +1,37 @@
 @import '../../../utils/scss/general_style';
 
 #indexMission {
+    overflow: hidden;
+
     >section {
         @include dim(100%, 100%);
 
-        >h2 {
+        >section {
+            @include dim(100%, 100%);
             position: sticky;
             @include pos(0, 0);
-            text-align: left;
-        }
 
-        >section {
-            position: sticky;
-            @include pos(0, 6rem);
+            >h2 {
+                text-align: left;
+            }
 
-            p {
-                text-align: right;
+            >section {
+                position: absolute;
+                @include pos(0, 50%, $isLeft: false);
+                translate: 0 calc(-50% - ($navbar-margin-bottom + 4rem));
+
+                >p {
+                    text-align: right;
+
+                    >span {
+                        display: inline-block
+                    }
+                }
             }
         }
 
         >div {
-            @include dim(100%, 200%);
+            @include dim(100%, 250%);
         }
     }
 }

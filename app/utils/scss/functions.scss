@@ -5,3 +5,7 @@
 @function verdeAguaAlpha($alpha) {
     @return rgba(0, 255, 194, $alpha);
 }
+
+@function viewportTopMargin() {
+    @return 0rem;
+}
