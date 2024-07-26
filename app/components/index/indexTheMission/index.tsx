@@ -44,8 +44,8 @@ const IndexTheMission = () => {
             withPaddingSide
             onViewEnter={{
                 function: () => { if (!isFinalScroll) setBodyIsScrolling(false) },
-                delay: 100,
-                amount: 0.9
+                delay: 50,
+                amount: ((window.innerWidth - 10) / window.innerWidth) //obter a fração com menos 10px da tela (por conta da scroll bar)
             }}
         >
             <section

@@ -17,6 +17,7 @@ type ViewportProps = HasReactNodeChildren & {
     onViewEnter?: {
         function: () => void
         delay: number
+        margin?: string
         amount: number | "some" | "all"
     }
     onWheel?: WheelEventHandler<HTMLDivElement>
@@ -47,7 +48,8 @@ const Viewport = ({
     })
 
     const isViewFunction = useInView(viewportRef, {
-        amount: onViewEnter?.amount || 0
+        amount: onViewEnter?.amount || 0,
+        margin: onViewEnter?.margin || "0px"
     })
 
     useEffect(() => {
