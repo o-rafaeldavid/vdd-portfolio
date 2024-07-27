@@ -4,10 +4,10 @@
   height: $navbar-height;
   position: fixed;
   @include pos($x: 50%, $y: 0, $isTop: false);
-  margin-bottom: $navbar-margin-bottom;
+  margin-bottom: navbarMarginBottom('desktop');
 
   @include phone {
-    margin-bottom: $navbar-small-margin-bottom;
+    margin-bottom: navbarMarginBottom('phone');
   }
 
   @include flex(row, center, center);

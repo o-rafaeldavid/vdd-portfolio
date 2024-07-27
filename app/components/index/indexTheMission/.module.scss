@@ -18,7 +18,7 @@
             >section {
                 position: absolute;
                 @include pos(0, 50%, $isLeft: false);
-                translate: 0 calc(-50% - ($navbar-margin-bottom + 4rem));
+                translate: 0 calc(-50% - (navbarMarginBottom('desktop') + 4rem));
 
                 >p {
                     text-align: right;

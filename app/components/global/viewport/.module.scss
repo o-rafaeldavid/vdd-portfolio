@@ -15,26 +15,26 @@
 }
 
 .withPaddingSide {
-    padding: 0 2 * $navbar-margin-bottom;
+    padding: 0 2 * navbarMarginBottom('desktop');
 
     @include phone {
-        padding: 0 $navbar-small-margin-bottom;
+        padding: 0 navbarMarginBottom('phone');
     }
 }
 
 .withPaddingTop {
-    padding-top: $navbar-margin-bottom + 4rem;
+    padding-top: navbarMarginBottom('desktop') + 4rem;
 
     @include phone {
-        padding-top: $navbar-small-margin-bottom + 2rem;
+        padding-top: navbarMarginBottom('phone') + 2rem;
     }
 }
 
 .withPaddingBottom {
-    padding-bottom: $navbar-margin-bottom * 2 + $navbar-height;
+    padding-bottom: navbarMarginBottom('desktop') * 2 + $navbar-height;
 
     @include phone {
-        padding-bottom: $navbar-small-margin-bottom* 2 + $navbar-height;
+        padding-bottom: navbarMarginBottom('phone')* 2 + $navbar-height;
     }
 }
 

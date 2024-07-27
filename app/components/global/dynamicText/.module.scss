@@ -1,7 +1,7 @@
 @import '../../../utils/scss/general_style';
 
 #dynamicText {
-    margin-top: $navbar-margin-bottom * 0.5;
+    margin-top: navbarMarginBottom('desktop') * 0.5;
     position: fixed;
     @include pos(50%, 0);
     translate: -50% 0;

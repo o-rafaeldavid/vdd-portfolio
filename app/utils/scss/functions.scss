@@ -1,11 +1,13 @@
-@function azulEletricoAlpha($alpha) {
+@import './variables.scss';
+
+@function azulEletrico($alpha: 1) {
     @return rgba(0, 178, 255, $alpha);
 }
 
-@function verdeAguaAlpha($alpha) {
+@function verdeAgua($alpha: 1) {
     @return rgba(0, 255, 194, $alpha);
 }
 
-@function viewportTopMargin() {
-    @return 0rem;
+@function navbarMarginBottom($type) {
+    @return map-get($navbar-margin-bottom, $type);
 }
