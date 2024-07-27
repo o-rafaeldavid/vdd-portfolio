@@ -1,4 +1,5 @@
 @import './media_query.scss';
+@import './functions.scss';
 
 @for $i from 1 to 7 {
     h#{$i} {
@@ -8,35 +9,34 @@
 }
 
 h1 {
-    font-variation-settings: "wght" 770, "GRAD" 88;
-    font-size: 5em;
+    font-variation-settings: "wght" headingWeight(1), "GRAD" 88;
+    font-size: headingSize(1, 'desktop');
 }
 
 h2 {
-    font-weight: 500;
-    font-size: 5rem;
+    font-weight: headingWeight(2);
+    font-size: headingSize(2, 'desktop');
 
-    @include smallDesktop {
-        font-size: 4rem;
+    @include small-desktop {
+        font-size: headingSize(2, 'small-desktop');
     }
 
     @include small-phone {
-        font-size: 3.5rem;
+        font-size: headingSize(2, 'small-phone');
     }
 }
 
 h3 {
-    font-weight: 500;
-    font-size: 3rem;
-
+    font-weight: headingWeight(3);
+    font-size: headingSize(3, 'desktop');
 }
 
 h5 {
-    font-weight: 700;
-    font-size: 1.5rem;
+    font-weight: headingWeight(5);
+    font-size: headingSize(5, 'desktop');
 
     @include phone {
-        font-size: 1.3rem;
+        font-size: headingSize(5, 'phone');
     }
 }
 
@@ -44,11 +44,11 @@ p {
     font-weight: 500;
     font-size: 2.75rem;
 
-    @include bigDesktop {
+    @include big-desktop {
         font-size: 3.125rem;
     }
 
-    @include smallDesktop {
+    @include small-desktop {
         font-size: 2.25rem;
     }
 

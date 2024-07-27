@@ -5,4 +5,25 @@ $navbar-margin-bottom: (
     'phone': 2rem,
 );
 
+$headings-size: (
+    1: ('desktop': 5rem,
+    ),
+    2: ('desktop': 4rem,
+        'small-desktop': 3.5rem,
+        'small-phone': 3rem,
+    ),
+    3: ('desktop': 3rem,
+    ),
+    5: ('desktop': 1.5rem,
+        'phone': 1.3rem,
+    )
+);
+
+$headings-weight: (
+    1: 770,
+    2: 500,
+    3: 500,
+    5: 700,
+);
+
 $background: rgb(16, 16, 16);

@@ -34,19 +34,22 @@
     height: 100%;
   }
 
+  >div,
+  >ul {
+    transition: width 300ms, opacity 300ms;
+
+  }
+
   >div {
     flex-grow: 1;
     width: $navbar-height;
 
     @include flex(row, center, center);
-    @include transitions();
   }
 
   >ul {
     @include flex(row, unset, unset);
     overflow: hidden;
-
-    @include transitions();
 
     $marginRightNav: 1rem;
 

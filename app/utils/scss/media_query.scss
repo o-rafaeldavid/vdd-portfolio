@@ -16,13 +16,13 @@
     }
 }
 
-@mixin smallDesktop {
+@mixin small-desktop {
     @media (max-width: 1400px) {
         @content;
     }
 }
 
-@mixin bigDesktop {
+@mixin big-desktop {
     @media (min-width: 2000px) {
         @content;
     }
