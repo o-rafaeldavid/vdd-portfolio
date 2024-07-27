@@ -1,11 +1,11 @@
-@mixin small-phone {
-    @media (max-width: 400px) {
+@mixin big-desktop {
+    @media (min-width: 2000px) {
         @content;
     }
 }
 
-@mixin phone {
-    @media (max-width: 550px) {
+@mixin small-desktop {
+    @media (max-width: 1400px) {
         @content;
     }
 }
@@ -16,14 +16,14 @@
     }
 }
 
-@mixin smallDesktop {
-    @media (max-width: 1400px) {
+@mixin phone {
+    @media (max-width: 550px) {
         @content;
     }
 }
 
-@mixin bigDesktop {
-    @media (min-width: 2000px) {
+@mixin small-phone {
+    @media (max-width: 400px) {
         @content;
     }
 }

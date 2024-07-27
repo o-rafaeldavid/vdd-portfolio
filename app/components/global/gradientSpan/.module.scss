@@ -1,7 +1,8 @@
 @import '../../../utils/scss/general_style';
 
 .gradientSpan {
-    background: -webkit-linear-gradient(135deg, $azul-eletrico, $verde-agua);
+    background: linear-gradient(135deg, azulEletrico(), verdeAgua());
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

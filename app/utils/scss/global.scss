@@ -69,27 +69,9 @@ a {
 
 .glowColorHover:hover {
     filter:
-        drop-shadow($azul-eletrico 2px 2px 10px) drop-shadow($verde-agua -2px -2px 10px);
+        drop-shadow(azulEletrico() 2px 2px 10px) drop-shadow(verdeAgua() -2px -2px 10px);
 }
 
 .pointer:hover {
     cursor: pointer;
-}
-
-
-
-.azul_eletrico_bg {
-    background-color: $azul-eletrico;
-}
-
-.azul_eletrico_color {
-    color: $azul-eletrico;
-}
-
-.verde_agua_bg {
-    background-color: $verde-agua;
-}
-
-.verde_agua_color {
-    color: $verde-agua;
 }

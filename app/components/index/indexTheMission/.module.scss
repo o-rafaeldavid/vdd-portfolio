@@ -21,13 +21,9 @@
             }
 
             >section {
-                align-self: flex-end;
-
-                @include tablet() {
-                    align-self: inherit;
-                    padding-bottom: $navbar-height + $navbar-margin-bottom * 2 + 4rem;
-                    margin: auto 0 auto 0;
-                }
+                position: absolute;
+                @include pos(0, 50%, $isLeft: false);
+                translate: 0 calc(-50% - (navbarMarginBottom('desktop') + 4rem));
 
                 >p {
                     text-align: right;

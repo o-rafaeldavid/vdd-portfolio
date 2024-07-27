@@ -1,42 +1,42 @@
 @import './media_query.scss';
+@import './functions.scss';
 
-@for $i from 1 to 7 {
+h1 {
+    font-variation-settings: "wght" headingWeight(1);
+    font-size: headingSize(1, 'desktop');
+}
+
+@for $i from 2 to 7 {
     h#{$i} {
         font-family: var(--font-syne);
         text-align: center;
-    }
-}
+        font-size: headingSize($i, 'desktop');
 
-h1 {
-    font-variation-settings: "wght" 770, "GRAD" 88;
-    font-size: 5em;
-}
+        @include big-desktop {
+            font-size: headingSize($i, 'desktop');
+        }
 
-h2 {
-    font-weight: 500;
-    font-size: 5rem;
+        @include small-desktop {
+            font-size: headingSize($i, 'small-desktop');
+        }
 
-    @include smallDesktop {
-        font-size: 4rem;
-    }
+        @include tablet {
+            font-size: headingSize($i, 'tablet');
+        }
 
-    @include small-phone {
-        font-size: 3.5rem;
-    }
-}
+        @include phone {
+            font-size: headingSize($i, 'phone');
+        }
 
-h3 {
-    font-weight: 500;
-    font-size: 3rem;
+        @include small-phone {
+            font-size: headingSize($i, 'small-phone');
+        }
 
-}
+        font-variation-settings: 'wght' headingWeight($i);
 
-h5 {
-    font-weight: 700;
-    font-size: 1.5rem;
-
-    @include phone {
-        font-size: 1.3rem;
+        @supports(font-variation-settings: normal) {
+            font-weight: headingWeight($i);
+        }
     }
 }
 
@@ -44,11 +44,11 @@ p {
     font-weight: 500;
     font-size: 2.75rem;
 
-    @include bigDesktop {
+    @include big-desktop {
         font-size: 3.125rem;
     }
 
-    @include smallDesktop {
+    @include small-desktop {
         font-size: 2.25rem;
     }
 

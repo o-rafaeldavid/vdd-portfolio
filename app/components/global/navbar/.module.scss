@@ -4,20 +4,20 @@
   height: $navbar-height;
   position: fixed;
   @include pos($x: 50%, $y: 0, $isTop: false);
-  margin-bottom: $navbar-margin-bottom;
+  translate: -50% 0;
 
   @include phone {
-    margin-bottom: $navbar-small-margin-bottom;
+    margin-bottom: navbarMarginBottom('phone');
   }
 
   @include flex(row, center, center);
   @include glassCard(0.75rem);
-  z-index: 1000;
-  overflow: hidden;
+  margin-bottom: navbarMarginBottom('desktop');
 
-  translate: -50% 0;
+  overflow: hidden;
   opacity: 0.5;
   transition: all 150ms;
+  z-index: 1000;
 
   &:hover {
     translate: -50% 0;
@@ -26,12 +26,14 @@
 
   //
 
-  @mixin transitions() {
-    transition: width 300ms, opacity 300ms;
-  }
-
   >* {
     height: 100%;
+  }
+
+  >div,
+  >ul {
+    transition: width 300ms, opacity 300ms;
+
   }
 
   >div {
@@ -39,14 +41,11 @@
     width: $navbar-height;
 
     @include flex(row, center, center);
-    @include transitions();
   }
 
   >ul {
     @include flex(row, unset, unset);
     overflow: hidden;
-
-    @include transitions();
 
     $marginRightNav: 1rem;
 
@@ -70,7 +69,6 @@
 
 
 .r {
-  cursor: pointer;
   font-family: var(--font-syne);
   $time: 300ms;
 
@@ -84,21 +82,21 @@
 
   @keyframes hoverRback {
     0% {
-      font-variation-settings: "wght" 800, "GRAD" 88;
+      font-variation-settings: "wght" 800;
     }
 
     100% {
-      font-variation-settings: "wght" 740, "GRAD" 88;
+      font-variation-settings: "wght" 740;
     }
   }
 
   @keyframes hoverR {
     0% {
-      font-variation-settings: "wght" 740, "GRAD" 88;
+      font-variation-settings: "wght" 740;
     }
 
     100% {
-      font-variation-settings: "wght" 800, "GRAD" 88;
+      font-variation-settings: "wght" 800;
     }
   }
 }

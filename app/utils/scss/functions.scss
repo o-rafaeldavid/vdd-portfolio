@@ -1,11 +1,57 @@
-@function azulEletricoAlpha($alpha) {
+@import './variables.scss';
+
+// colors
+@function azulEletrico($alpha: 1) {
     @return rgba(0, 178, 255, $alpha);
 }
 
-@function verdeAguaAlpha($alpha) {
+@function verdeAgua($alpha: 1) {
     @return rgba(0, 255, 194, $alpha);
 }
 
-@function viewportTopMargin() {
-    @return 0rem;
+// text
+@function headingSize($level, $media) {
+    $headings-level: map-get($headings-size, $level);
+    @return map-get($headings-level, $media);
+}
+
+@function headingWeight($level) {
+    @return map-get($headings-weight, $level);
+}
+
+// navbar
+@function navbarMarginBottom($media) {
+    @return map-get($navbar-margin-bottom, $media);
+}
+
+@function navbarHeightOccupied($media) {
+    @return $navbar-height +2 * navbarMarginBottom($media);
+}
+
+// dynamicText
+@function dynamicTextHeightOccupied($media) {
+    @return navbarMarginBottom('desktop')+headingSize(5, $media);
+}
+
+@function dynamicTextHeightOccupied($media) {
+    @return 2 * navbarMarginBottom($media);
+}
+
+// viewport
+@function viewportPadding($orientation, $media) {
+    @if $orientation =='top' {
+        @return dynamicTextHeightOccupied($media)+navbarMarginBottom('phone');
+    }
+
+    @else if $orientation =='bottom' {
+        @return navbarHeightOccupied($media);
+    }
+
+    @else if $orientation =='side' {
+        @return navbarMarginBottom($media) / 2;
+    }
+
+    @else {
+        @return null;
+    }
 }

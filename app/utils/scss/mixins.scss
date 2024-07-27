@@ -21,21 +21,8 @@
 }
 
 @mixin pos($x: 0, $y: 0, $isLeft: true, $isTop: true) {
-    @if ($isLeft) {
-        left: $x;
-    }
-
-    @else {
-        right: $x;
-    }
-
-    @if ($isTop) {
-        top: $y;
-    }
-
-    @else {
-        bottom: $y;
-    }
+    #{if($isLeft, 'left', 'right')}: $x;
+    #{if($isTop, 'top', 'bottom')}: $y;
 }
 
 @mixin absoluteCentered() {
@@ -58,12 +45,12 @@
     $ax, $ay, $ab,
     $vx, $vy, $vb ) {
     filter:
-        drop-shadow(white $wx $wy $wb) drop-shadow($background 0 0 6px) drop-shadow($azul-eletrico $ax $ay $ab) drop-shadow($verde-agua $vx $vy $vb);
+        drop-shadow(white $wx $wy $wb) drop-shadow($background 0 0 6px) drop-shadow(azulEletrico() $ax $ay $ab) drop-shadow(verdeAgua() $vx $vy $vb);
 }
 
 @mixin auraFrameAlpha($wx, $wy, $wb, $w_alpha,
     $ax, $ay, $ab, $a_alpha,
     $vx, $vy, $vb, $v_alpha ) {
     filter:
-        drop-shadow(rgba(255, 255, 255, $w_alpha) $wx $wy $wb) drop-shadow($background 0 0 6px) drop-shadow(azulEletricoAlpha($a_alpha) $ax $ay $ab) drop-shadow(verdeAguaAlpha($v_alpha) $vx $vy $vb);
+        drop-shadow(rgba(255, 255, 255, $w_alpha) $wx $wy $wb) drop-shadow($background 0 0 6px) drop-shadow(azulEletrico($a_alpha) $ax $ay $ab) drop-shadow(verdeAgua($v_alpha) $vx $vy $vb);
 }
