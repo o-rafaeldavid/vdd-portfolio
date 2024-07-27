@@ -10,18 +10,31 @@
             @include dim(100%, 100%);
             position: sticky;
             @include pos(0, 0);
+            @include flex(column, flex-start, flex-start, 5rem);
+
+            @include tablet() {
+                @include flex(column, center, flex-start, 5rem);
+            }
 
             >h2 {
                 text-align: left;
             }
 
             >section {
-                position: absolute;
-                @include pos(0, 50%, $isLeft: false);
-                translate: 0 calc(-50% - ($navbar-margin-bottom + 4rem));
+                align-self: flex-end;
+
+                @include tablet() {
+                    align-self: inherit;
+                    padding-bottom: $navbar-height + $navbar-margin-bottom * 2 + 4rem;
+                    margin: auto 0 auto 0;
+                }
 
                 >p {
                     text-align: right;
+
+                    @include tablet() {
+                        text-align: center;
+                    }
 
                     >span {
                         display: inline-block

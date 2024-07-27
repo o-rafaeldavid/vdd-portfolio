@@ -2,12 +2,13 @@
 
 import { useContext, useRef, useState } from "react"
 import { useMotionValueEvent, useScroll } from "framer-motion"
+import { useWindow } from "@/app/utils/hooks/useWindow"
 import { BodyScrollContext } from "@/app/utils/contexts/bodyScrollContext"
 import GradientSpan from "../../global/gradientSpan"
 import Viewport from "../../global/viewport"
 import MissionSentenceLine from "./missionSentenceLine"
 import index_themission_style from "./.module.scss"
-import { useWindow } from "@/app/utils/hooks/useWindow"
+import { useAppQueries } from "@/app/utils/hooks/useAppQueries"
 
 const IndexTheMission = () => {
     // linhas da frase
@@ -38,14 +39,13 @@ const IndexTheMission = () => {
 
     //definir a amount do onViewEnter depois do mount para obter a window
     const window = useWindow()
-    /**
-     * @returns {JSX.Element} Retorna o componente IndexTheMission
-     */
+    const { tablet } = useAppQueries()
+
     return (
         <Viewport
             id={index_themission_style.indexMission}
             withPaddingTop
-            withPaddingSide
+            withPaddingSide={!tablet}
             onViewEnter={{
                 function: () => { if (!isFinalScroll) setBodyIsScrolling(false) },
                 delay: 50,
