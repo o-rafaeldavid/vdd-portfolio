@@ -21,21 +21,8 @@
 }
 
 @mixin pos($x: 0, $y: 0, $isLeft: true, $isTop: true) {
-    @if ($isLeft) {
-        left: $x;
-    }
-
-    @else {
-        right: $x;
-    }
-
-    @if ($isTop) {
-        top: $y;
-    }
-
-    @else {
-        bottom: $y;
-    }
+    #{if($isLeft, 'left', 'right')}: $x;
+    #{if($isTop, 'top', 'bottom')}: $y;
 }
 
 @mixin absoluteCentered() {

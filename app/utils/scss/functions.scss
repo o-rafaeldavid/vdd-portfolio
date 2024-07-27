@@ -30,7 +30,7 @@
 
 // dynamicText
 @function dynamicTextHeightOccupied($media) {
-    @return 2 * navbarMarginBottom($media);
+    @return navbarMarginBottom('desktop')+headingSize(5, $media);
 }
 
 @function dynamicTextHeightOccupied($media) {
@@ -40,7 +40,7 @@
 // viewport
 @function viewportPadding($orientation, $media) {
     @if $orientation =='top' {
-        @return navbarMarginBottom($media)+4rem;
+        @return dynamicTextHeightOccupied($media)+navbarMarginBottom('phone');
     }
 
     @else if $orientation =='bottom' {

@@ -1,42 +1,42 @@
 @import './media_query.scss';
 @import './functions.scss';
 
-@for $i from 1 to 7 {
-    h#{$i} {
-        font-family: var(--font-syne);
-        text-align: center;
-    }
-}
-
 h1 {
-    font-variation-settings: "wght" headingWeight(1), "GRAD" 88;
+    font-variation-settings: "wght" headingWeight(1);
     font-size: headingSize(1, 'desktop');
 }
 
-h2 {
-    font-weight: headingWeight(2);
-    font-size: headingSize(2, 'desktop');
+@for $i from 2 to 7 {
+    h#{$i} {
+        font-family: var(--font-syne);
+        text-align: center;
+        font-size: headingSize($i, 'desktop');
 
-    @include small-desktop {
-        font-size: headingSize(2, 'small-desktop');
-    }
+        @include big-desktop {
+            font-size: headingSize($i, 'desktop');
+        }
 
-    @include small-phone {
-        font-size: headingSize(2, 'small-phone');
-    }
-}
+        @include small-desktop {
+            font-size: headingSize($i, 'small-desktop');
+        }
 
-h3 {
-    font-weight: headingWeight(3);
-    font-size: headingSize(3, 'desktop');
-}
+        @include tablet {
+            font-size: headingSize($i, 'tablet');
+        }
 
-h5 {
-    font-weight: headingWeight(5);
-    font-size: headingSize(5, 'desktop');
+        @include phone {
+            font-size: headingSize($i, 'phone');
+        }
 
-    @include phone {
-        font-size: headingSize(5, 'phone');
+        @include small-phone {
+            font-size: headingSize($i, 'small-phone');
+        }
+
+        font-variation-settings: 'wght' headingWeight($i);
+
+        @supports(font-variation-settings: normal) {
+            font-weight: headingWeight($i);
+        }
     }
 }
 
