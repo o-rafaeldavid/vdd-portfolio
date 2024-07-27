@@ -48,7 +48,7 @@
     }
 
     @else if $orientation =='side' {
-        @return navbarMarginBottom($media) / 2;
+        @return navbarMarginBottom($media);
     }
 
     @else {

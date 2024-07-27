@@ -18,15 +18,21 @@
 
             >h2 {
                 text-align: left;
+                margin: viewportPadding('top', 'desktop') 0 0 viewportPadding('side', 'desktop');
+
+                @include phone {
+                    margin: viewportPadding('top', 'phone') 0 0 0;
+                }
             }
 
             >section {
                 position: absolute;
                 @include pos(0, 50%, $isLeft: false);
-                translate: 0 calc(-50% - (navbarMarginBottom('desktop') + 4rem));
+                translate: 0 calc(-50% - (navbarMarginBottom('desktop')));
 
                 >p {
                     text-align: right;
+                    margin-right: viewportPadding('side', 'desktop');
 
                     @include tablet() {
                         text-align: center;
